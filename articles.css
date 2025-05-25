@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: black;
+    color: white;
+    line-height: 1.6;
+}
+
+header {
+    margin-top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 9%;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 3rem;
+    color: #b74b4b;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+nav a {
+    font-size: 1.8rem;
+    color: white;
+    margin-left: 4rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+nav a:hover,
+nav a.active {
+    color: #b74b4b;
+    border-bottom: 3px solid #b74b4b;
+}
+
+.container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 12rem 2rem 5rem;
+}
+
+.blog-header {
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.blog-header h1 {
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+}
+
+.blog-header p {
+    font-size: 1.8rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.articles-list {
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.article-item {
+    border-bottom: 1px solid rgba(183, 75, 75, 0.3);
+    padding: 4rem 0;
+    transition: all 0.3s ease;
+}
+
+.article-item:hover {
+    padding-left: 2rem;
+}
+
+.article-item:last-child {
+    border-bottom: none;
+}
+
+.article-date {
+    font-size: 1.4rem;
+    color: #b74b4b;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.article-title {
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.article-title a {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.article-title a:hover {
+    color: #b74b4b;
+}
+
+.article-excerpt {
+    font-size: 1.6rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+.article-meta {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.article-tags {
+    display: flex;
+    gap: 1rem;
+}
+
+.tag {
+    background: rgba(183, 75, 75, 0.2);
+    color: #b74b4b;
+    padding: 0.3rem 1rem;
+    border-radius: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    color: #b74b4b;
+    font-size: 1.6rem;
+    margin-bottom: 4rem;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    color: white;
+    transform: translateX(-5px);
+}
+
+.coming-soon {
+    opacity: 0.6;
+}
+
+.coming-soon .article-title a {
+    color: rgba(255, 255, 255, 0.5);
+    cursor: default;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem 9%;
+    background: rgba(183, 75, 75, 0.1);
+    border-top: 0.2rem solid #b74b4b;
+    margin-top: 6rem;
+}
+
+.footer-text p {
+    font-size: 1.6rem;
+}
+
+.footer-icon a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background: #b74b4b;
+    border-radius: 0.8rem;
+    transition: 0.3s ease;
+}
+
+.footer-icon a i {
+    font-size: 2.5rem;
+    color: black;
+}
+
+.footer-icon a:hover {
+    box-shadow: 0 0 1rem #b74b4b;
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 55%;
+    }
+
+    .container {
+        padding: 10rem 2rem 3rem;
+    }
+
+    nav a {
+        margin-left: 2rem;
+        font-size: 1.6rem;
+    }
+
+    .blog-header h1 {
+        font-size: 3.5rem;
+    }
+
+    .article-item:hover {
+        padding-left: 1rem;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 450px) {
+    .blog-header h1 {
+        font-size: 3rem;
+    }
+
+    .article-title {
+        font-size: 2.4rem;
+    }
+
+    .article-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
