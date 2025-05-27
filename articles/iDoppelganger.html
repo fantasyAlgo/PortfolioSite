@@ -53,7 +53,7 @@
                 <p> 
                 Recently CS teacher gave my class an assignment to make a game from scratch using python. <br> <br>
                 As someone who's already made a bunch of small singleplayer games,
-                (the ones i've shared are only the tip of the iceberg-Lots of small demos I've made are still somewhere in my file system), 
+                (the ones I've shared are only the tip of the iceberg-Lots of small demos I've made are still somewhere in my file system), 
                 I was quite bored and unmotivated to the idea of making another one; So to make the assignment less boring and to push myself a bit,
                 I decided to make a multiplayer game inspired by <a href="https://mythfall.com/">Mythfall</a>
                 <br>
@@ -70,7 +70,7 @@
                   <li>The game should be programmed in a modular way, because I'll likely expand upon it</li>
                 </ul>
                 <h3>Why is the game called 'Infinite doppelganger'?</h3>
-                <p>At the start of the project, my teached asked me the name of the game.
+                <p>At the start of the project, my teacher asked me the name of the game.
                 Since initially the game should have been an infinite procedurally generated dungeon, with a copy of yourself as boss,
                 it made complete sense to call it "Infinite Doppelganger". 
                 Shortly after, the scope of the game greatly reduced, but probably due to lazyness the name stuck</p>
@@ -132,7 +132,7 @@
               deeper about how the server and client work</p>
               <h3>Server</h3>
               <p>
-              The game uses generally an <strong>autoritative</strong>
+              The game use generally an <strong>autoritative</strong>
               server model, that is, 
               the server handles the whole game state (store/update/generate enemies,arrows and players), but in my case the player is trusted
               when it comes to movement in order to reduce latency (i'll about this later), making it actually an <strong>hybrid</strong> model.<br><br>
@@ -149,15 +149,15 @@
               and takes and draws what it receives from the
               server.
               </p>
-              <h4>Why raylib?</h4>
-              <p>The choice of raylib for the drawing part comes down to two main reasons</p>
+              <h4>Why Raylib?</h4>
+              <p>The choice of Raylib for the drawing part comes down to two main reasons</p>
               <ul>
-                <li>I'm used to work with raylib, i know exactly what function to use and where do i need to go when i don't know something</li>
+                <li>I'm used to work with Raylib, I know exactly what function to use and where do i need to go when I don't know something</li>
                 <li>The main alternative here is pygame, that from my experience has a lot of useless boilerplate, </li>
               </ul>
-              <p>In the game i've actually used the python bindings for raylib, which are much worse 
-              <a href="https://electronstudio.github.io/raylib-python-cffi/README.html#performance">performance wise</a>, though given how used i am
-              working with raylib, i think it was a worthy deal </p>
+              <p>In the game I've actually used the python bindings for Raylib, which are much worse 
+              <a href="https://electronstudio.github.io/Raylib-python-cffi/README.html#performance">performance wise</a>, though given how used I am
+              working with Raylib, I think it was a worthy deal </p>
               
             </div>
             <div class="section">
@@ -338,12 +338,12 @@ def createPortalFunction(startPos, endPos, lastDir=0):
                 <p>
                 What you see in the article is only how the project ended up, but the structure and the code was revised and changed a lot of times as
                 needs changed and problems emerged.
-                <br> A mayor example of this is probably the intial choise to use the TCP/JSON stack in the networking phase. I didn't
+                <br> A mayor example of this is probably the intial choice to use the TCP/JSON stack in the networking phase. I didn't
                 really understood how unefficient the stack was until i tried to play the game under a different router!.<br><br>
 
 
                 Another interesting example is that 
-                initially the server game state handling and the packet handling phase were initially done in the same thread. That caused the 
+                the server game state handling and the packet handling phase were initially done in the same thread. That caused the 
                 game to feel quicker as the number of sent packages increased - likely due by the increase in server calls, that in turn increased the number of 
                 updates making the game feel faster, even with delta time integrated into the system.
                 </p>
