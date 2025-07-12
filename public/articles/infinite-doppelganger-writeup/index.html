@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+  
+  <link rel="stylesheet" href="/css/article.css">
+
+<title>Infinite doppelganger - My New Hugo Site</title>
+
+</head>
+<body>
+    <header>
+    <a href="/" class="logo">Avery</a>
+    <nav>
+        <a href="/" >Home</a>
+        <a href="/#about">About me</a>
+        <a href="/#education">Education</a>
+        <a href="/#projects">Experience</a>
+        <a href="/#contact">Contact</a>
+        <a href="/articles/" class="active">Articles</a>
+    </nav>
+</header>
+
+    
+    <main>
+        
+
+  <div class="article-container">
+    <div class = "article-header">
+      <h1 class="article-title"> Infinite doppelganger </h1>
+      <div class="article-meta">
+          <div class="meta-item">
+              <i class="fas fa-calendar"></i>
+              <span>2025-07-09</span>
+          </div>
+          <div class="meta-item">
+              <i class="fas fa-tag"></i>
+              <span>Game Development</span>
+          </div>
+    </div>
+    <p class="article-description">
+    A little writeup of the infinite doppelganger game 
+    </p>
+    <br>
+    <br>
+    <br>
+    <div class="article-content">
+      <div class="section">
+  <h2 id="introduction">Introduction</h2>
+<p>This game is a prototype of a multiplayer MMO game, meaning that every player can enter the game with its own client and play with other people, also with their own client</p>
+<p><a href="https://github.com/fantasyAlgo/InfiniteDoppelganger">Here&rsquo;s the github repo with all the source code</a></p>
+
+</div>
+
+<div class="section">
+  <h2 id="motivation-and-plan">Motivation and plan</h2>
+<p>Recently CS teacher gave my class an assignment to make a game from scratch using python.</p>
+<p>As someone who&rsquo;s already made a bunch of small singleplayer games,
+(the ones i&rsquo;ve shared are only the tip of the iceberg-Lots of small demos I&rsquo;ve made are still somewhere in my file system),
+I was quite bored and unmotivated to the idea of making another one; So to make the assignment less boring and to push myself a bit,
+I decided to make a multiplayer game inspired by <a href="https://mythfall.com/">Mythfall</a></p>
+<p>&hellip;and yeah, you can probably see the influence.</p>
+<h3 id="game-plan">Game Plan</h3>
+<ul>
+<li>The game will support multiplayer functionality.</li>
+<li>The player takes the role of a dungeon, created using a custom map editor.</li>
+<li>Progression is room-based: players are locked in a chamber until all enemies are defeated.</li>
+<li>Diverse enemy types will be featured for combat variety.</li>
+<li>Players can “slide” or dash to a location based on mouse input for dynamic movement.</li>
+<li>The game should be programmed in a modular way, because I&rsquo;ll likely expand upon it</li>
+</ul>
+<h3 id="why-is-the-game-called-infinite-doppelganger">Why is the game called &lsquo;Infinite doppelganger&rsquo;?</h3>
+<p>At the start of the project, my teacher asked me the name of the game. Since initially the game should have been an infinite procedurally generated dungeon, with a copy of yourself as boss, it made complete sense to call it &ldquo;Infinite Doppelganger&rdquo;. Shortly after, the scope of the game greatly reduced, but probably due to lazyness the name stuck</p>
+
+</div>
+
+<div class="section">
+  <h2 id="architecture">Architecture</h2>
+<p><img src="/images/clientServer.png" alt="Architecture"></p>
+<p>Since the game is multiplayer, I needed three main components: a <strong>client</strong> that each player runs, a <strong>server</strong> to maintain the global game state (including other players’ data), and an efficient way to pass information between the two.</p>
+<p>This led me to explore the dilemma of how to handle communication between the client and server, which ultimately came down to choosing between <strong>UDP</strong> and <strong>TCP</strong>.</p>
+<h3 id="tcp-vs-udp">TCP vs UDP</h3>
+<h4 id="tcp-transmission-control-protocol">TCP (Transmission Control Protocol)</h4>
+<p>In short, TCP creates a stable, reliable connection between the client and server. Every message sent is guaranteed to arrive, and if it doesn&rsquo;t, it will be resent until it does. This reliability comes at a cost: <strong>latency</strong>. Because of all the checks and handshakes involved, TCP is relatively slow—especially for real-time multiplayer games.</p>
+<p>I initially chose TCP for its reliability, assuming it would help maintain stable communication. However, I ran into issues almost immediately. When running the client with a different connection, the game barely worked at all. And since TCP treats messages as a stream of data rather than discrete packets, it was also awkward to work with for my game’s needs.</p>
+<h4 id="udp-user-datagram-protocol">UDP (User Datagram Protocol)</h4>
+<p>UDP, in contrast, is a <strong>connectionless</strong> protocol. There’s no handshake, and packets are sent individually with minimal overhead with just a basic checksum. If a packet is lost or corrupted, it’s simply dropped. There’s no retry, making UDP technically &ldquo;unreliable.&rdquo;</p>
+<p>Because of this, UDP is fast, and it is what i actually used in the game, as it&rsquo;s not a big deal to have a lost message.</p>
+<h3 id="the-problem-with-json">The problem with JSON</h3>
+<p>Even after switching to UDP, the game still felt &lsquo;slow&rsquo;, After digging in a little, I&rsquo;ve realized that this was because of how I was packaging data.</p>
+<p>In my web development projects i&rsquo;ve always used JSON to retrieve and package data from APIs using it, so i was surprised to know how JSON is inefficient. Under the hood, JSON serialize every kind of data into strings (UTF-8) and not actual binary, this means that for example a player&rsquo;s position, e.g 125, which can be easily represented with 7 bits, will be serialized as &ldquo;125&rdquo; (that is 8 bit per digit).</p>
+<p>After speaking to the author of Mythfall, who implemented his own binary serialization format tailored for his game, I decided to switch to a similarly quick BSF, <strong>MsgPack</strong>.</p>
+
+</div>
+
+<div class="section">
+  <h2 id="client-and-server">Client and Server</h2>
+<p>In the architecture section, i explained what protocols and libraries i used for the project, here i want to go (a little) deeper about how the server and client work</p>
+<h3 id="server">Server</h3>
+<p>The game uses generally an <strong>autoritative</strong> server model, that is, the server handles the whole game state (store/update/generate enemies,arrows and players), but in my case the player is trusted when it comes to movement in order to reduce latency (i&rsquo;ll about this later), making it actually an <strong>hybrid</strong> model.</p>
+<p>The server has two threads working in unison, sharing data as they need (this involved the use of mutex btw).<br>
+The first one handles updates the game state, e.g generates enemies, updates arrows and so on.</p>
+<p>The other thread handles the networking phase - it takes and unpackage the data sent from the player, updates the players, disconnect a player that does not send data for a while, and sends the game state data to the client.</p>
+<h3 id="client">Client</h3>
+<p>The main job of the client here is to draw everything and to handle the player.</p>
+<p>The client works by first taking the player movement and input (This is also includes if the player need to draw an arrow, as the client cannot generate anything, it needs to tell server to do that), it serialize and sends them to the server, and takes and draws what it receives from the server.</p>
+<h4 id="why-raylib">Why raylib?</h4>
+<p>The choice of raylib for the drawing part comes down to two main reasons</p>
+<ul>
+<li>I&rsquo;m used to work with raylib, i know exactly what function to use and where do i need to go when i don&rsquo;t know something</li>
+<li>The main alternative here is pygame, that from my experience has a lot of useless boilerplate,</li>
+</ul>
+<p>In the game i&rsquo;ve actually used the python bindings for raylib, which are much worse <a href="https://electronstudio.github.io/raylib-python-cffi/README.html#performance">performance wise</a>, though given how used i am working with raylib, i think it was a worthy deal</p>
+
+</div>
+
+<div class="section">
+  <h2 id="dungeon">Dungeon</h2>
+<h3 id="what-is-the-dungeon">What is the dungeon</h3>
+<p>In the game, the dungeon is a grid-based map composed of different chambers that the player progresses through.<br>
+Under the hood, the dungeon is a fixed-size numpy matrix, where each number in the matrix represents a tile ID, which the client and server interpret according to the following mapping:</p>
+<ol start="0">
+<li>Empty tile — black void</li>
+<li>Wall tile — blocks player movement</li>
+<li>Spawn tile — player start position</li>
+<li>Floor tile — standard walkable tile</li>
+<li>Chamber division — separates rooms</li>
+<li>Boss spawner — triggers boss fights</li>
+<li>Unused / reserved — currently unused</li>
+<li>Inner wall — structural variation of walls</li>
+</ol>
+<p>These tiles can be placed using the editor by clicking on the map after having selected the tile, with the resulting matrix being saved using<br>
+np.save(&ldquo;maps/&rdquo; + map_name, map)</p>
+<p>By the way, to make the map making process less frustrating, i&rsquo;ve also implemented a DFS to fill the map. The process is really simple, when you click &lsquo;p&rsquo; on certain tile, the algorithm first change the tile id into 3, and searches on each side (up, down, left, right) another tile with id 0 (the empty tile) and if it is unvisited, it adds to the list of unvisited tiles; It then takes the first tile from that list, and the process repeats until the list is empty (the code is similar to the blocksWith1 function below)</p>
+<p><img src="/images/mapBeforeFlood.png" alt=""> <img src="/images/mapAfterFlood.png" alt=""></p>
+<h3 id="how-does-the-server-know-where-to-spawn-enemies">How does the server know where to spawn enemies</h3>
+<p>When the server starts, it loads the map matrix using np.load(path) and runs an iterative DFS (Depth First Search) treating &lsquo;chamber division&rsquo; tiles as boundaries that prevent traversal between rooms.<br>
+This allows the game to identify each distinct room. Enemies are spawned dynamically only in nearby, unexplored chambers, ensuring the game world feels reactive and prevents unnecessary server load.</p>
+<p>If you are interested, here&rsquo;s the code:</p>
+<div class="code-block">
+  <pre>
+    <code class="language-python">
+<pre><code>def blocksWith1(map, visited, pos, mapInts, typeIsl = 0):
+    queue = []
+    queue.append(pos)
+    result = []
+    spawnPoint = -1 # The spawnPoint tells if the island has boss tile, a spawn tile, or neither.
+    while len(queue) != 0:
+        cPos = queue.pop()
+        if (cPos[0] &lt;= 1 or cPos[0] &gt;= map.shape[0]-2 or cPos[1] &lt;= 1 or cPos[1] &gt;= map.shape[1]-2):
+            continue
+
+        # Checking in all directions if there is a spawn/boss tile, since cPos is always a floor tile
+        if map[cPos[0]+1][cPos[1]] == 2 or map[cPos[0]-1][cPos[1]] == 2 or map[cPos[0]][cPos[1]+1] == 2 or map[cPos[0]][cPos[1]-1] == 2:
+            spawnPoint = 0
+        if map[cPos[0]+1][cPos[1]] == 5 or map[cPos[0]-1][cPos[1]] == 5 or map[cPos[0]][cPos[1]+1] == 5 or map[cPos[0]][cPos[1]-1] == 5:
+            spawnPoint = 1
+
+        # This checks if the cPos is visited, if so continuing the algorithm would lead to an infinite loop
+        if map[cPos[0]][cPos[1]] == 1 or map[cPos[0]][cPos[1]] == 4 or visited[cPos[0]][cPos[1]]:
+            continue
+
+        result.append(cPos) # Adds the position to the resulting island
+        visited[cPos[0]][cPos[1]] = True
+        mapInts[cPos[0]][cPos[1]] = typeIsl
+        if map[cPos[0]+1][cPos[1]] == 3:
+            queue.append((cPos[0]+1, cPos[1]))
+        if map[cPos[0]-1][cPos[1]] == 3:
+            queue.append((cPos[0]-1, cPos[1]))
+        if map[cPos[0]][cPos[1]+1] == 3:
+            queue.append((cPos[0], cPos[1]+1))
+        if map[cPos[0]][cPos[1]-1] == 3:
+            queue.append((cPos[0], cPos[1]-1))
+    return result, spawnPoint
+
+def loadMap(self, mapName):
+    self.map = np.load(mapDir / mapName)
+    self.islands = []
+    visited = np.zeros(self.map.shape, dtype=bool)
+    mapInts = np.zeros(self.map.shape, dtype=int)
+    n_islands = 0
+
+    for i in range(self.map.shape[0]):
+        for j in range(self.map.shape[1]):
+            if not visited[i][j] and self.map[i][j] == 3:
+                n_islands += 1
+                islands, spawnPoint = blocksWith1(self.map, visited, [i, j], mapInts, n_islands) # blocksWith1 is the DFS
+                if spawnPoint == 0: # It means that there is no spawnPoint
+                    continue
+                if spawnPoint == 1: # That means there was a tile with id = 5
+                    self.bossIsland = islands
+                    continue # I don't want to add the island with the boss inside all other island
+                self.islands.append(islands) 
+                self.islands_id.append(n_islands)
+                if len(self.islands[-1]) &lt; 50: # If its too small, there is no reason to keep it
+                    self.islands = self.islands[:-1]
+                else:
+                    self.centers.append(self.takeCenter(self.islands[-1])) # The center will be used to determine if the player is closed enough to an island
+
+    self.mapInts = mapInts
+    print(self.map.shape)
+
+&lt;/code&gt;
+</code></pre>
+<p></pre></p>
+</div> 
+<h3 id="how-about-collisions">How about collisions?</h3>
+<p>Because the map is represented as a matrix, checking a collision is really simple: Given an NxM map where each tile is T*T, if the tile in the player/enemy/arrow position is at x/T, y/T, and if it is different than 3(the floor tile), then there is a collision.</p>
+
+</div>
+
+<div class="section">
+  <h2 id="particle-system">Particle system</h2>
+<p>The particle system is entirely managed by the client, meaning that the particles are not transferred between client and server. This happens because as the particle system generates lots of particles every second, sending each to the server every time would generate a big and evitable load, slowing down the whole game.</p>
+<p>The particle system under the hood works with a main class which is used by every part of the client to add particles.<br>
+Each particle has its own direction (unlike in <a href="https://github.com/fantasyAlgo/Moon-lander">Moon lander</a>, the direction remain the same, and not interpolated between two), color (not interpolated), and size, that slowly diminuish using the formula SIZE*(1 - time/MAX_PARTICLE_TIME), in this way the particle appears to &lsquo;fade&rsquo; over time.</p>
+<p>If you&rsquo;re interested, the code is in <a href="https://github.com/fantasyAlgo/InfiniteDoppelganger/blob/main/client/ParticleSystem.py">client/ParticleSystem.py</a></p>
+<h3 id="how-it-is-used">How it is used</h3>
+<p>The main reason I implemented a particle system was to improve what game designers often refer to as game feel—that sense of responsiveness and immersion that makes actions in a game feel satisfying.</p>
+<p>Typically, game feel is improved through a combination of animations, sound design, and environmental interactions. But since I can&rsquo;t draw or compose music—and AI tools are improving but still not free—I leaned heavily on particles to fill that gap. By using them generously in movement, combat, and interactions, I was able to create a visual feedback loop that feels dynamic and reactive, even with limited resources. I think it worked out pretty well.</p>
+<p><img src="/images/particlesDemWithout.gif" alt="Without particle system"> <img src="/images/particlesDemWith.gif" alt="With particle system"></p>
+
+</div>
+
+<div class="section">
+  <h2 id="player">Player</h2>
+<h3 id="movement">Movement</h3>
+<p>The player&rsquo;s movement is mostly processed inside the client, as it checks collisions, change xy position based on the input and do the &lsquo;sliding&rsquo; behavior when it needs to.</p>
+<p>The movement was pretty straightforward, as it simply checks weather WASD is pressed changing direction and position accordingly. Player collisions are checked here <strong>before</strong> moving the player to avoid going back later (a decently error-prone problem to work on). The movement is not validated in the server, making the game easier to cheat in, but since it is not a competitive game, the trade of is worth it.</p>
+<h3 id="sliding">Sliding</h3>
+<p><img src="/images/sliding.gif" alt="Sliding"></p>
+<p>The sliding you see in this gif is implemented using the following algorithm</p>
+<ol>
+<li>Detect when right click is being released</li>
+<li>Converts the mouse position into maps position</li>
+<li>Creates a function that interpolates time with the start position (player one) and the mouse position</li>
+<li>This function changes the player position untill the time since right was released arrive to 1, then the sliding function becomes None and the player can move again</li>
+</ol>
+<p>The Interpolation function works by making another function that pass t (time since the right click was released ) throught a polynomial function that starts at 0 and ends at 1, and then passing the new t into a linear interpolation function plus some trig functions to help create the &lsquo;swing&rsquo; effect</p>
+<p>The result is a smooth movement that gives the impression of a skillful dodge or slide. Here&rsquo;s the core logic:</p>
+<div class="code-block">
+  <pre>
+    <code class="language-python">
+<pre><code>def createPortalFunction(startPos, endPos, lastDir=0):
+    dist = math.dist(startPos, endPos)
+    maxDist = 2.7
+    # As you can see in the video, if the position of the mouse is too far way, it clamp it into maxDist's range
+    if dist &gt; maxDist: 
+        diff = [(endPos[0]-startPos[0])/dist, (endPos[1]-startPos[1])/dist]
+        endPos = [startPos[0] + diff[0]*maxDist, startPos[1] + diff[1]*maxDist]
+    smoothstep = lambda t : 3*t**2 - 2*t**3
+    def f(t):
+        t = smoothstep(t)
+        x = startPos[0]*(1-t) +  endPos[0]*t + (math.sin(math.pi*t) if lastDir != 3 else -math.sin(math.pi*t))
+        y = startPos[1]*(1-t) +  endPos[1]*t
+        return (x, y) # New player position
+    return f
+
+&lt;/code&gt;
+</code></pre>
+<p></pre></p>
+</div> 
+<p>As you can see the createPortalFunction returns another function that takes the current time and returns the new position.</p>
+
+</div>
+
+<div class="section">
+  <h2 id="conclusion">Conclusion</h2>
+<p>Making Infinite Doppelganger was a formative experience, as it helped me to think better about the technologies I choose and to be really thoughtful about it at the start of any project.</p>
+<p>What you see in the article is only how the project ended up, but the structure and the code was revised and changed a lot of times as needs changed and problems emerged.<br>
+A mayor example of this is probably the intial choise to use the TCP/JSON stack in the networking phase. I didn&rsquo;t really understood how unefficient the stack was until i tried to play the game under a different router!.</p>
+<p>Another interesting example is that initially the server game state handling and the packet handling phase were initially done in the same thread. That caused the game to feel quicker as the number of sent packages increased - likely due by the increase in server calls, that in turn increased the number of updates making the game feel faster, even with delta time integrated into the system.</p>
+<p>This write-up focuses on the parts of Infinite Doppelganger I found most interesting. I left out simpler elements like enemy and projectile behavior — but if something key is missing, that wasn’t intentional.</p>
+<div class="highlight-box">
+  <h4 id="if-you-want-some-part-of-the-game-to-be-betterentirely-explained-im-open-to-suggestions-the-email-is-in-the-portfolio-page">If you want some part of the game to be better/entirely explained, I&rsquo;m open to suggestions, the email is in the portfolio page.</h4>
+</div>
+
+</div>
+
+
+    </div>
+  </div>
+    
+
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.style.opacity = '1';
+                backToTop.style.visibility = 'visible';
+            } else {
+                backToTop.style.opacity = '0';
+                backToTop.style.visibility = 'hidden';
+            }
+        });
+
+        
+        document.querySelector('.back-to-top').style.opacity = '0';
+        document.querySelector('.back-to-top').style.visibility = 'hidden';
+        document.querySelector('.back-to-top').style.transition = 'all 0.3s ease';
+    </script>
+
+
+    </main>
+
+    
+
+<footer>
+    <div class="footer-text">
+        <p>&copy; 2025 Avery | All Rights Reserved</p>
+    </div>
+    
+    <div class="footer-icon">
+        <a href="#"><i class="fas fa-arrow-up"></i></a>
+    </div>
+</footer>
+
+
+</body>
+</html>

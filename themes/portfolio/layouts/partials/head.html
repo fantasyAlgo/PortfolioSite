@@ -1,0 +1,15 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+{{ if and (eq .Type "articles") (eq .Kind "page") }}
+  <!-- Single article page -->
+  <link rel="stylesheet" href="{{ "css/article.css" | relURL }}">
+{{ else if eq .Type "articles" }}
+  <!-- Article list page -->
+  <link rel="stylesheet" href="{{ "css/articles.css" | relURL }}">
+{{ else }}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+{{ end }}
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>

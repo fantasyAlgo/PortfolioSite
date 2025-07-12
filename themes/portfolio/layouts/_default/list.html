@@ -1,0 +1,46 @@
+{{ define "main" }}
+<div class="container">
+    <div class="blog-header">
+        <h1>{{ .Title }}</h1>
+        {{ if .Content }}
+        <div class="section-content">
+            {{ .Content }}
+        </div>
+        {{ end }}
+    </div>
+
+    <a href="{{ "/" | relURL }}" class="back-link">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+    </a>
+
+    {{ if .Pages }}
+    <div class="articles-list">
+        {{ range .Pages }}
+        <article class="article-item">
+            {{ if .Date }}
+            <div class="article-date">{{ .Date.Format "January 2, 2006" }}</div>
+            {{ end }}
+            <h2 class="article-title">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </h2>
+            {{ if .Summary }}
+            <p class="article-excerpt">
+                {{ .Summary }}
+            </p>
+            {{ end }}
+            <div class="article-meta">
+                <span>{{ .ReadingTime }} min read</span>
+                {{ if .Params.tags }}
+                <div class="article-tags">
+                    {{ range .Params.tags }}
+                    <span class="tag">{{ . }}</span>
+                    {{ end }}
+                </div>
+                {{ end }}
+            </div>
+        </article>
+        {{ end }}
+    </div>
+    {{ end }}
+</div>
+{{ end }}

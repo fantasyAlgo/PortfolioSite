@@ -1,0 +1,38 @@
+{{ define "main" }}
+<div class="container">
+    <div class="blog-header">
+        <h1>{{ .Title }}</h1>
+        <p>{{ .Data.Plural | title }} in this category</p>
+    </div>
+
+    <a href="{{ "/articles/" | relURL }}" class="back-link">
+        <i class="fas fa-arrow-left"></i> Back to Articles
+    </a>
+
+    {{ if .Pages }}
+    <div class="articles-list">
+        {{ range .Pages }}
+        <article class="article-item">
+            <div class="article-date">{{ .Date.Format "January 2, 2006" }}</div>
+            <h2 class="article-title">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </h2>
+            <p class="article-excerpt">
+                {{ .Summary }}
+            </p>
+            <div class="article-meta">
+                <span>{{ .ReadingTime }} min read</span>
+                <div class="article-tags">
+                    {{ range .Params.tags }}
+                    <span class="tag">{{ . }}</span>
+                    {{ end }}
+                </div>
+            </div>
+        </article>
+        {{ end }}
+    </div>
+    {{ else }}
+    <p>No articles found in this category.</p>
+    {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,75 @@
+baseURL: 'http://localhost:1313'
+languageCode: 'en-us'
+title: 'portfolio'
+theme: 'portfolio'
+
+params:
+  name: 'Avery'
+  tagline: 'Student game developer'
+  articlesTagline: 'Thoughts on game development, programming, and technology'
+  
+  about: 
+    <p>Hi, I'm high school student interested in game development, physics engines and graphic programming in general. On top of that, I also like to tinker with web development projects</p>
+    <p>I <b>like:</b></p>
+    <ul>
+      <li>Arch, btw</li>
+      <li>Nvim (I use nvchad)</li>
+      <li>C++, low level programming</li>
+      <li>Game engines</li>
+      <li>Math (From Calculus to Algebraic topology)</li>
+      <li>Estrogen</li>
+    </ul>
+  
+  personalInfo:
+    - label: 'Age'
+      value: '17'
+    - label: 'Languages'
+      value: 'English, Italian (mother tongue)'
+    - label: 'Location'
+      value: 'Rome, RM, Italy'
+  
+  social:
+    - icon: 'fa-brands fa-github'
+      url: 'https://github.com/fantasyAlgo'
+  
+  education:
+    - year: '2021-2025'
+      title: 'High School'
+      institution: 'Itis Enrico Fermi'
+      status: 'Graduated'
+  
+  testScores:
+    - test: 'SAT'
+      score: '1440'
+      details: 'Math: 740, Reading: 700'
+    - test: 'IELTS Academic'
+      score: '7.5'
+      details: 'L:7.5;R:7.5;W:7;S:7'
+  
+  certifications:
+    - name: 'Generative Adversarial Networks (GANs) Specialization'
+      url: 'https://coursera.org/share/df3aa7dfe7d790a175bd985bfdbf1cb4'
+    - name: 'Neural Networks and Deep Learning'
+      url: 'https://coursera.org/share/4dab258176c0bc99af20b003a6a135c1'
+  
+  projects:
+    - title: 'Infinite doppelganger'
+      description: 'A demo of a UDP-based multiplayer MMO, made with python3 and raylib'
+      image: 'images/infiniteDoppleganger.png'
+      url: '/articles/idoppelganger/'
+    - title: 'Minecraft clone'
+      description: 'A simple minecraft clone made in c++ opengl with world generation and saving, with a ton of optimizations!'
+      image: 'images/minecraft_clone.png'
+      url: 'https://github.com/fantasyAlgo/openglMinicraft'
+    # Add more projects...
+  
+  contact:
+    - icon: 'fas fa-envelope'
+      title: 'Email'
+      value: 'averyLikesOpengl@gmail.com'
+    - icon: 'fas fa-phone'
+      title: 'Phone'
+      value: '+39 392 749 8905'
+    - icon: 'fas fa-map-marker-alt'
+      title: 'Location'
+      value: 'Rome, Italy'

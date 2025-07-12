@@ -1,0 +1,54 @@
+{{ define "main" }}
+
+  <div class="article-container">
+    <div class = "article-header">
+      <h1 class="article-title"> {{ .Title }} </h1>
+      <div class="article-meta">
+          <div class="meta-item">
+              <i class="fas fa-calendar"></i>
+              <span>{{ dateFormat "2006-01-02" .Date }}</span>
+          </div>
+          <div class="meta-item">
+              <i class="fas fa-tag"></i>
+              <span>Game Development</span>
+          </div>
+    </div>
+    <p class="article-description">
+    {{ .Description }} 
+    </p>
+    <br>
+    <br>
+    <br>
+    <div class="article-content">
+      {{ .Content }}
+    </div>
+  </div>
+    {{ partial "articles/footer.html" }}
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide back to top button
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.style.opacity = '1';
+                backToTop.style.visibility = 'visible';
+            } else {
+                backToTop.style.opacity = '0';
+                backToTop.style.visibility = 'hidden';
+            }
+        });
+
+        // Initially hide the back to top button
+        document.querySelector('.back-to-top').style.opacity = '0';
+        document.querySelector('.back-to-top').style.visibility = 'hidden';
+        document.querySelector('.back-to-top').style.transition = 'all 0.3s ease';
+    </script>
+
+{{ end }}

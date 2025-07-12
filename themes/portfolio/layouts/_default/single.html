@@ -1,0 +1,30 @@
+{{ define "main" }}
+<div class="container">
+    <article class="article-single">
+        <div class="article-header">
+            {{ if .Date }}
+            <div class="article-date">{{ .Date.Format "January 2, 2006" }}</div>
+            {{ end }}
+            <h1>{{ .Title }}</h1>
+            {{ if .Params.tags }}
+            <div class="article-meta">
+                <span>{{ .ReadingTime }} min read</span>
+                <div class="article-tags">
+                    {{ range .Params.tags }}
+                    <span class="tag">{{ . }}</span>
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
+        </div>
+        
+        <div class="article-content">
+            {{ .Content }}
+        </div>
+    </article>
+    
+    <a href="{{ "/" | relURL }}" class="back-link">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+</div>
+{{ end }}

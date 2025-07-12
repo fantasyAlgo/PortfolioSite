@@ -1,0 +1,117 @@
+baseURL = "https://example.org/"
+languageCode = "en-us"
+title = "My New Hugo Site"
+theme = "portfolio"
+
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+
+[params]
+name = "Avery"
+tagline = "Student game developer"
+articlesTagline = "Thoughts on game development, programming, and technology"
+about = "<p>Hi, I'm high school student interested in game development, physics engines and graphic programming in general. On top of that, I also like to tinker with web development projects</p> <p>I <b>like:</b></p> <ul> <li>Arch, btw</li> <li>Nvim (I use nvchad)</li> <li>C++, low level programming</li> <li>Game engines</li> <li>Math (From Calculus to Algebraic topology)</li> <li>Estrogen</li> </ul>"
+
+  [[params.personalInfo]]
+  label = "Age"
+  value = "17"
+
+  [[params.personalInfo]]
+  label = "Languages"
+  value = "English, Italian (mother tongue)"
+
+  [[params.personalInfo]]
+  label = "Location"
+  value = "Rome, RM, Italy"
+
+  [[params.social]]
+  icon = "fa-brands fa-github"
+  url = "https://github.com/fantasyAlgo"
+
+  [[params.education]]
+  year = "2021-2025"
+  title = "High School"
+  institution = "Itis Enrico Fermi"
+  status = "Graduated"
+
+  [[params.testScores]]
+  test = "SAT"
+  score = "1440"
+  details = "Math: 740, Reading: 700"
+
+  [[params.testScores]]
+  test = "IELTS Academic"
+  score = "7.5"
+  details = "L:7.5;R:7.5;W:7;S:7"
+
+  [[params.certifications]]
+  name = "Generative Adversarial Networks (GANs) Specialization"
+  url = "https://coursera.org/share/df3aa7dfe7d790a175bd985bfdbf1cb4"
+
+  [[params.certifications]]
+  name = "Neural Networks and Deep Learning"
+  url = "https://coursera.org/share/4dab258176c0bc99af20b003a6a135c1"
+
+  [[params.projects]]
+  title = "Infinite doppelganger"
+  description = "A demo of a UDP-based multiplayer MMO, made with python3 and raylib"
+  image = "images/infiniteDoppleganger.png"
+  url = "/articles/idoppelganger/"
+
+  [[params.projects]]
+  title = "Minecraft clone"
+  description = "A simple minecraft clone made in c++ opengl with world generation and saving, with a ton of optimizations!"
+  image = "images/minecraft_clone.png"
+  url = "https://github.com/fantasyAlgo/openglMinicraft"
+
+  [[params.projects]]
+  title = "Terraria clone"
+  description = "A demo of a terraria clone made in c++ with raylib"
+  image = "images/terraria_clone.png"
+  url = "https://github.com/fantasyAlgo/TerrariaCloneRefactor"
+
+  [[params.projects]]
+  title = "Pacman clone"
+  description = "A copy of pacman in c++ SFML"
+  image = "images/pacman_clone.png"
+  url = "https://github.com/fantasyAlgo/Fake_pacman"
+
+  [[params.projects]]
+  title = "Moon lander game"
+  description = "A canvas JS game where you need to land in procedurally generated terrain"
+  image = "images/moon_lander.jpeg"
+  url = "https://github.com/fantasyAlgo/Moon-lander"
+
+  [[params.projects]]
+  title = "Asteroid game"
+  description = "Asteroid but better, made using Java JFrame with no external libraries!"
+  image = "images/asteroids.jpeg"
+  url = "https://github.com/fantasyAlgo/JFrameAsteroids"
+
+  [[params.projects]]
+  title = "2D Fluid simulation"
+  description = "An SPH-based fluid simulation inspired by sebastian lague's video"
+  image = "images/fluidSim.png"
+  url = "https://github.com/fantasyAlgo/RayFluidSPH"
+
+
+
+  [[params.contact]]
+  icon = "fas fa-envelope"
+  title = "Email"
+  value = "averyLikesOpengl@gmail.com"
+
+  [[params.contact]]
+  icon = "fas fa-phone"
+  title = "Phone"
+  value = "+39 392 749 8905"
+
+  [[params.contact]]
+  icon = "fas fa-map-marker-alt"
+  title = "Location"
+  value = "Rome, Italy"
+
