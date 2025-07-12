@@ -2,17 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.org/articles/</loc>
+    <loc>https://fantasyalgo.github.io/PortfolioSite/articles/</loc>
     <lastmod>2025-07-09T17:54:22+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/articles/infinite-doppelganger-writeup/</loc>
+    <loc>https://fantasyalgo.github.io/PortfolioSite/articles/infinite-doppelganger-writeup/</loc>
     <lastmod>2025-07-09T17:54:22+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/</loc>
+    <loc>https://fantasyalgo.github.io/PortfolioSite/</loc>
     <lastmod>2025-07-09T17:54:22+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/categories/</loc>
+    <loc>https://fantasyalgo.github.io/PortfolioSite/categories/</loc>
   </url><url>
-    <loc>https://example.org/tags/</loc>
+    <loc>https://fantasyalgo.github.io/PortfolioSite/tags/</loc>
   </url>
 </urlset>
