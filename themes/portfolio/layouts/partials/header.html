@@ -1,11 +1,12 @@
 <header>
-    <a href="{{ "/" | relURL }}" class="logo">{{ .Site.Params.name | default "Avery" }}</a>
-    <nav>
-        <a href="{{ "/" | relURL }}" {{ if .IsHome }}class="active"{{ end }}>Home</a>
-        <a href="{{ "/#about" | relURL }}">About me</a>
-        <a href="{{ "/#education" | relURL }}">Education</a>
-        <a href="{{ "/#projects" | relURL }}">Experience</a>
-        <a href="{{ "/#contact" | relURL }}">Contact</a>
-        <a href="{{ "/articles/" | relURL }}" {{ if eq .Type "articles" }}class="active"{{ end }}>Articles</a>
-    </nav>
+  <a href="{{ "" | relURL }}" class="logo">{{ .Site.Params.name | default "Avery" }}</a>
+  <nav>
+    <a href="{{ "" | relURL }}" {{ if .IsHome }}class="active"{{ end }}>Home</a>
+    <a href="{{ "/" | relURL }}#about">About me</a>
+    <a href="{{ "/" | relURL }}#education">Education</a>
+    <a href="{{ "/" | relURL }}#projects">Experience</a>
+    <a href="{{ "/" | relURL }}#contact">Contact</a>
+    <a href="{{ "articles/" | relURL }}" {{ if eq .Type "articles" }}class="active"{{ end }}>Articles</a>
+  </nav>
 </header>
+
