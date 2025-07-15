@@ -1,6 +1,6 @@
 baseURL = "https://fantasyalgo.github.io/PortfolioSite/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Avery portfolio"
 theme = "portfolio"
 publishDir = "docs"
 
