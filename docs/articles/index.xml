@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Articles on My New Hugo Site</title>
-    <link>http://localhost:1313/PortfolioSite/articles/</link>
-    <description>Recent content in Articles on My New Hugo Site</description>
+    <title>Articles on Avery portfolio</title>
+    <link>https://fantasyalgo.github.io/PortfolioSite/articles/</link>
+    <description>Recent content in Articles on Avery portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 09 Jul 2025 17:54:22 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/PortfolioSite/articles/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://fantasyalgo.github.io/PortfolioSite/articles/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Infinite doppelganger</title>
-      <link>http://localhost:1313/PortfolioSite/articles/infinite-doppelganger-writeup/</link>
+      <link>https://fantasyalgo.github.io/PortfolioSite/articles/infinite-doppelganger-writeup/</link>
       <pubDate>Wed, 09 Jul 2025 17:54:22 +0200</pubDate>
-      <guid>http://localhost:1313/PortfolioSite/articles/infinite-doppelganger-writeup/</guid>
+      <guid>https://fantasyalgo.github.io/PortfolioSite/articles/infinite-doppelganger-writeup/</guid>
       <description>&lt;div class=&#34;section&#34;&gt;&#xA;  &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;This game is a prototype of a multiplayer MMO game, meaning that every player can enter the game with its own client and play with other people, also with their own client&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/fantasyAlgo/InfiniteDoppelganger&#34;&gt;Here&amp;rsquo;s the github repo with all the source code&lt;/a&gt;&lt;/p&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;section&#34;&gt;&#xA;  &lt;h2 id=&#34;motivation-and-plan&#34;&gt;Motivation and plan&lt;/h2&gt;&#xA;&lt;p&gt;Recently CS teacher gave my class an assignment to make a game from scratch using python.&lt;/p&gt;&#xA;&lt;p&gt;As someone who&amp;rsquo;s already made a bunch of small singleplayer games,&#xA;(the ones i&amp;rsquo;ve shared are only the tip of the iceberg-Lots of small demos I&amp;rsquo;ve made are still somewhere in my file system),&#xA;I was quite bored and unmotivated to the idea of making another one; So to make the assignment less boring and to push myself a bit,&#xA;I decided to make a multiplayer game inspired by &lt;a href=&#34;https://mythfall.com/&#34;&gt;Mythfall&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
