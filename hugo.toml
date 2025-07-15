@@ -98,6 +98,18 @@ about = "<p>Hi, I'm high school student interested in game development, physics 
   image = "images/fluidSim.png"
   url = "https://github.com/fantasyAlgo/RayFluidSPH"
 
+  [[params.small_projects]]
+  title = "Rubik's cube simulator"
+  description = "A simple rubik's cube playground made in threejs"
+  image = "images/rubik_cube.png"
+  url = "https://github.com/fantasyAlgo/Threejs-rubik-cube"
+
+  [[params.small_projects]]
+  title = "AstarMaze"
+  description = "A simple maze generator with an Astar pathfinder"
+  image = "images/AStarDemo.png"
+  url = "https://github.com/fantasyAlgo/AstarMaze"
+
 
 
   [[params.contact]]

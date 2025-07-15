@@ -85,21 +85,39 @@
 </section>
 
 <section class="projects" id="projects">
-    <h2 class="heading">My <span>Projects</span></h2>
-    
-    <div class="projects-container">
-        {{ range .Site.Params.projects }}
-        <div class="project-box">
-            <img src="{{ .image | relURL }}" alt="{{ .title }}">
-            <div class="project-layer">
-                <h4>{{ .title }}</h4>
-                <p>{{ .description }}</p>
-                <a href="{{ .url }}"><i class="fas fa-external-link-alt"></i></a>
-            </div>
-        </div>
-        {{ end }}
-    </div>
+  <h2 class="heading">My <span>Projects</span></h2>
+  
+  <div class="projects-container">
+      {{ range .Site.Params.projects }}
+      <div class="project-box">
+          <img src="{{ .image | relURL }}" alt="{{ .title }}">
+          <div class="project-layer">
+              <h4>{{ .title }}</h4>
+              <p>{{ .description }}</p>
+              <a href="{{ .url }}"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+      </div>
+      {{ end }}
+  </div>
 </section>
+<section class="projects" id="projects">
+  <h2 class="heading">My <span>Smaller projects</span></h2>
+  
+  <div class="projects-container">
+      {{ range .Site.Params.small_projects }}
+      <div class="project-box">
+          <img src="{{ .image | relURL }}" alt="{{ .title }}">
+          <div class="project-layer">
+              <h4>{{ .title }}</h4>
+              <p>{{ .description }}</p>
+              <a href="{{ .url }}"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+      </div>
+      {{ end }}
+  </div>
+</section>
+
+
 
 <section class="contact" id="contact">
     <h2 class="heading">Contact <span>Me</span></h2>
