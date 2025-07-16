@@ -42,7 +42,7 @@ At the start of the project, my teacher asked me the name of the game. Since ini
 
 {{< section >}}
 ## Architecture
-![Architecture](/images/clientServer.png)
+![Architecture](../../images/clientServer.png)
 
 Since the game is multiplayer, I needed three main components: a **client** that each player runs, a **server** to maintain the global game state (including other players’ data), and an efficient way to pass information between the two.  
   
@@ -125,7 +125,7 @@ np.save("maps/" + map\_name, map)
 
 By the way, to make the map making process less frustrating, i've also implemented a DFS to fill the map. The process is really simple, when you click 'p' on certain tile, the algorithm first change the tile id into 3, and searches on each side (up, down, left, right) another tile with id 0 (the empty tile) and if it is unvisited, it adds to the list of unvisited tiles; It then takes the first tile from that list, and the process repeats until the list is empty (the code is similar to the blocksWith1 function below)
 
-![](/images/mapBeforeFlood.png) ![](/images/mapAfterFlood.png)
+![](../../images/mapBeforeFlood.png) ![](../../images/mapAfterFlood.png)
 
 ### How does the server know where to spawn enemies
 
@@ -219,7 +219,7 @@ The main reason I implemented a particle system was to improve what game designe
   
 Typically, game feel is improved through a combination of animations, sound design, and environmental interactions. But since I can't draw or compose music—and AI tools are improving but still not free—I leaned heavily on particles to fill that gap. By using them generously in movement, combat, and interactions, I was able to create a visual feedback loop that feels dynamic and reactive, even with limited resources. I think it worked out pretty well.  
 
-![Without particle system](/images/particlesDemWithout.gif) ![With particle system](/images/particlesDemWith.gif)
+![Without particle system](../../images/particlesDemWithout.gif) ![With particle system](../../images/particlesDemWith.gif)
 
 {{< /section >}}
 
@@ -233,7 +233,7 @@ The player's movement is mostly processed inside the client, as it checks collis
 The movement was pretty straightforward, as it simply checks weather WASD is pressed changing direction and position accordingly. Player collisions are checked here **before** moving the player to avoid going back later (a decently error-prone problem to work on). The movement is not validated in the server, making the game easier to cheat in, but since it is not a competitive game, the trade of is worth it.
 
 ### Sliding
-![Sliding](/images/sliding.gif)
+![Sliding](../../images/sliding.gif)
 
 The sliding you see in this gif is implemented using the following algorithm
 

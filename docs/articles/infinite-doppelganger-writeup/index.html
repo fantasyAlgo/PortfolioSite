@@ -81,7 +81,7 @@ I decided to make a multiplayer game inspired by <a href="https://mythfall.com/"
 
 <div class="section">
   <h2 id="architecture">Architecture</h2>
-<p><img src="/images/clientServer.png" alt="Architecture"></p>
+<p><img src="../../images/clientServer.png" alt="Architecture"></p>
 <p>Since the game is multiplayer, I needed three main components: a <strong>client</strong> that each player runs, a <strong>server</strong> to maintain the global game state (including other players’ data), and an efficient way to pass information between the two.</p>
 <p>This led me to explore the dilemma of how to handle communication between the client and server, which ultimately came down to choosing between <strong>UDP</strong> and <strong>TCP</strong>.</p>
 <h3 id="tcp-vs-udp">TCP vs UDP</h3>
@@ -137,7 +137,7 @@ Under the hood, the dungeon is a fixed-size numpy matrix, where each number in t
 <p>These tiles can be placed using the editor by clicking on the map after having selected the tile, with the resulting matrix being saved using<br>
 np.save(&ldquo;maps/&rdquo; + map_name, map)</p>
 <p>By the way, to make the map making process less frustrating, i&rsquo;ve also implemented a DFS to fill the map. The process is really simple, when you click &lsquo;p&rsquo; on certain tile, the algorithm first change the tile id into 3, and searches on each side (up, down, left, right) another tile with id 0 (the empty tile) and if it is unvisited, it adds to the list of unvisited tiles; It then takes the first tile from that list, and the process repeats until the list is empty (the code is similar to the blocksWith1 function below)</p>
-<p><img src="/images/mapBeforeFlood.png" alt=""> <img src="/images/mapAfterFlood.png" alt=""></p>
+<p><img src="../../images/mapBeforeFlood.png" alt=""> <img src="../../images/mapAfterFlood.png" alt=""></p>
 <h3 id="how-does-the-server-know-where-to-spawn-enemies">How does the server know where to spawn enemies</h3>
 <p>When the server starts, it loads the map matrix using np.load(path) and runs an iterative DFS (Depth First Search) treating &lsquo;chamber division&rsquo; tiles as boundaries that prevent traversal between rooms.<br>
 This allows the game to identify each distinct room. Enemies are spawned dynamically only in nearby, unexplored chambers, ensuring the game world feels reactive and prevents unnecessary server load.</p>
@@ -223,7 +223,7 @@ Each particle has its own direction (unlike in <a href="https://github.com/fanta
 <h3 id="how-it-is-used">How it is used</h3>
 <p>The main reason I implemented a particle system was to improve what game designers often refer to as game feel—that sense of responsiveness and immersion that makes actions in a game feel satisfying.</p>
 <p>Typically, game feel is improved through a combination of animations, sound design, and environmental interactions. But since I can&rsquo;t draw or compose music—and AI tools are improving but still not free—I leaned heavily on particles to fill that gap. By using them generously in movement, combat, and interactions, I was able to create a visual feedback loop that feels dynamic and reactive, even with limited resources. I think it worked out pretty well.</p>
-<p><img src="/images/particlesDemWithout.gif" alt="Without particle system"> <img src="/images/particlesDemWith.gif" alt="With particle system"></p>
+<p><img src="../../images/particlesDemWithout.gif" alt="Without particle system"> <img src="../../images/particlesDemWith.gif" alt="With particle system"></p>
 
 </div>
 
@@ -233,7 +233,7 @@ Each particle has its own direction (unlike in <a href="https://github.com/fanta
 <p>The player&rsquo;s movement is mostly processed inside the client, as it checks collisions, change xy position based on the input and do the &lsquo;sliding&rsquo; behavior when it needs to.</p>
 <p>The movement was pretty straightforward, as it simply checks weather WASD is pressed changing direction and position accordingly. Player collisions are checked here <strong>before</strong> moving the player to avoid going back later (a decently error-prone problem to work on). The movement is not validated in the server, making the game easier to cheat in, but since it is not a competitive game, the trade of is worth it.</p>
 <h3 id="sliding">Sliding</h3>
-<p><img src="/images/sliding.gif" alt="Sliding"></p>
+<p><img src="../../images/sliding.gif" alt="Sliding"></p>
 <p>The sliding you see in this gif is implemented using the following algorithm</p>
 <ol>
 <li>Detect when right click is being released</li>
