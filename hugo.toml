@@ -107,7 +107,7 @@ about = "<p>Hi, I'm high school student interested in game development, physics 
   [[params.small_projects]]
   title = "AstarMaze"
   description = "A simple maze generator with an Astar pathfinder"
-  image = "images/AStarDemo.png"
+  image = "images/AstarDemo.png"
   url = "https://github.com/fantasyAlgo/AstarMaze"
 
 
