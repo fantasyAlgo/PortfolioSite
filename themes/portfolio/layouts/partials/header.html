@@ -3,7 +3,6 @@
   <nav>
     <a href="{{ "" | relURL }}" {{ if .IsHome }}class="active"{{ end }}>Home</a>
     <a href="{{ "" | relURL }}#about">About me</a>
-    <a href="{{ "" | relURL }}#education">Education</a>
     <a href="{{ "" | relURL }}#projects">Experience</a>
     <a href="{{ "" | relURL }}#contact">Contact</a>
     <a href="{{ "articles/" | relURL }}" {{ if eq .Type "articles" }}class="active"{{ end }}>Articles</a>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.139.4">
+	<meta name="generator" content="Hugo 0.152.2"><script src="/PortfolioSite/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=PortfolioSite/livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -19,7 +19,6 @@
   <nav>
     <a href="/PortfolioSite/" class="active">Home</a>
     <a href="/PortfolioSite/#about">About me</a>
-    <a href="/PortfolioSite/#education">Education</a>
     <a href="/PortfolioSite/#projects">Experience</a>
     <a href="/PortfolioSite/#contact">Contact</a>
     <a href="/PortfolioSite/articles/" >Articles</a>
@@ -50,17 +49,20 @@
 <section class="about" id="about">
     <div class="about-container">
         <div class="about-content">
-            <h3>Student game developer</h3>
-            <p>Hi, I'm high school student interested in game development, physics engines and graphic programming in general. On top of that, I also like to tinker with web development projects</p> <p>I <b>like:</b></p> <ul> <li>Arch, btw</li> <li>Nvim (I use nvchad)</li> <li>C++, low level programming</li> <li>Game engines</li> <li>Math (From Calculus to Algebraic topology)</li> <li>Estrogen</li> </ul>
+            <h3>About</h3>
+            <p>
+Hi, I’m Avery, a game developer who likes making things from scratch to really understand how they work. I’ve used all kinds of technologies across my projects, so I’m comfortable adapting to whatever a job needs.
+</p> 
+
             
             <div class="personal-info">
                 
                 <div class="info-item">
-                    <span>Age:</span> 17
+                    <span>Age:</span> 18
                 </div>
                 
                 <div class="info-item">
-                    <span>Languages:</span> English, Italian (mother tongue)
+                    <span>Languages:</span> English (Ielts 7.5), Italian (mother tongue)
                 </div>
                 
                 <div class="info-item">
@@ -74,63 +76,28 @@
     </div>
 </section>
 
-<section class="education" id="education">
-    <h2 class="heading">My <span>Education</span></h2>
-    
-    <div class="education-container">
-        <div class="education-column">
-            <h3 class="title">Academic Background</h3>
-
-            
-            <div class="education-box">
-                <div class="education-content">
-                    <div class="content">
-                        <div class="year"><i class="fas fa-calendar"></i>2021-2025</div>
-                        <h3>High School</h3>
-                        <p>Itis Enrico Fermi</p>
-                        <p>Graduated</p>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-
-        <div class="education-column">
-            <h3 class="title">Test Scores & Certifications</h3>
-            
-            <div class="education-box">
-                <div class="education-content">
-                    <div class="content">
-                        <div class="year"><i class="fas fa-award"></i> Test Scores</div>
-                        <h3>Standardized Testing</h3>
-                        
-                        <p>SAT: <b>1440</b> (Math: 740, Reading: 700)</p>
-                        
-                        <p>IELTS Academic: <b>7.5</b> (L:7.5;R:7.5;W:7;S:7)</p>
-                        
-                    </div>
-
-                    <div class="education-content">
-                        <div class="content">
-                            <div class="year"><i class="fas fa-certificate"></i> </div>
-                            <h3>Professional Certifications</h3>
-                            
-                            <p><a href="https://coursera.org/share/df3aa7dfe7d790a175bd985bfdbf1cb4">Generative Adversarial Networks (GANs) Specialization</a></p>
-                            
-                            <p><a href="https://coursera.org/share/4dab258176c0bc99af20b003a6a135c1">Neural Networks and Deep Learning</a></p>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="projects" id="projects">
   <h2 class="heading">My <span>Projects</span></h2>
   
   <div class="projects-container">
+      
+      <div class="project-box">
+          <img src="/PortfolioSite/images/MoonLanderPhoto.jpeg" alt="Moon lander 3d">
+          <div class="project-layer">
+              <h4>Moon lander 3d</h4>
+              <p>A 3d game made completely in webgl and typescript without libraries</p>
+              <a href="https://github.com/fantasyAlgo/Moon_lander_3d"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+      </div>
+      
+      <div class="project-box">
+          <img src="/PortfolioSite/images/minecraft_clone.png" alt="Minecraft clone">
+          <div class="project-layer">
+              <h4>Minecraft clone</h4>
+              <p>A simple minecraft clone made in c&#43;&#43; opengl with world generation and saving, with a ton of optimizations!</p>
+              <a href="https://github.com/fantasyAlgo/openglMinicraft"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+      </div>
       
       <div class="project-box">
           <img src="/PortfolioSite/images/infiniteDoppleganger.png" alt="Infinite doppelganger">
@@ -142,11 +109,29 @@
       </div>
       
       <div class="project-box">
-          <img src="/PortfolioSite/images/minecraft_clone.png" alt="Minecraft clone">
+          <img src="/PortfolioSite/images/moon_lander.jpeg" alt="Moon lander game">
           <div class="project-layer">
-              <h4>Minecraft clone</h4>
-              <p>A simple minecraft clone made in c&#43;&#43; opengl with world generation and saving, with a ton of optimizations!</p>
-              <a href="https://github.com/fantasyAlgo/openglMinicraft"><i class="fas fa-external-link-alt"></i></a>
+              <h4>Moon lander game</h4>
+              <p>A canvas JS game where you need to land in procedurally generated terrain</p>
+              <a href="https://github.com/fantasyAlgo/Moon-lander"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+      </div>
+      
+      <div class="project-box">
+          <img src="/PortfolioSite/images/moonPhysicsEngine.png" alt="2D physics engine">
+          <div class="project-layer">
+              <h4>2D physics engine</h4>
+              <p>A 2d physics engine with everything you need to make a game</p>
+              <a href="https://github.com/fantasyAlgo/moonPhysicsEngine"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+      </div>
+      
+      <div class="project-box">
+          <img src="/PortfolioSite/images/fluidSim.png" alt="2D Fluid simulation">
+          <div class="project-layer">
+              <h4>2D Fluid simulation</h4>
+              <p>An SPH-based fluid simulation inspired by sebastian lague&#39;s video</p>
+              <a href="https://github.com/fantasyAlgo/RayFluidSPH"><i class="fas fa-external-link-alt"></i></a>
           </div>
       </div>
       
@@ -169,29 +154,11 @@
       </div>
       
       <div class="project-box">
-          <img src="/PortfolioSite/images/moon_lander.jpeg" alt="Moon lander game">
-          <div class="project-layer">
-              <h4>Moon lander game</h4>
-              <p>A canvas JS game where you need to land in procedurally generated terrain</p>
-              <a href="https://github.com/fantasyAlgo/Moon-lander"><i class="fas fa-external-link-alt"></i></a>
-          </div>
-      </div>
-      
-      <div class="project-box">
           <img src="/PortfolioSite/images/asteroids.jpeg" alt="Asteroid game">
           <div class="project-layer">
               <h4>Asteroid game</h4>
               <p>Asteroid but better, made using Java JFrame with no external libraries!</p>
               <a href="https://github.com/fantasyAlgo/JFrameAsteroids"><i class="fas fa-external-link-alt"></i></a>
-          </div>
-      </div>
-      
-      <div class="project-box">
-          <img src="/PortfolioSite/images/fluidSim.png" alt="2D Fluid simulation">
-          <div class="project-layer">
-              <h4>2D Fluid simulation</h4>
-              <p>An SPH-based fluid simulation inspired by sebastian lague&#39;s video</p>
-              <a href="https://github.com/fantasyAlgo/RayFluidSPH"><i class="fas fa-external-link-alt"></i></a>
           </div>
       </div>
       

@@ -12,17 +12,21 @@ publishDir = "docs"
 
 [params]
 name = "Avery"
-tagline = "Student game developer"
+tagline = "About"
 articlesTagline = "Thoughts on game development, programming, and technology"
-about = "<p>Hi, I'm high school student interested in game development, physics engines and graphic programming in general. On top of that, I also like to tinker with web development projects</p> <p>I <b>like:</b></p> <ul> <li>Arch, btw</li> <li>Nvim (I use nvchad)</li> <li>C++, low level programming</li> <li>Game engines</li> <li>Math (From Calculus to Algebraic topology)</li> <li>Estrogen</li> </ul>"
+about = """
+<p>
+Hi, I’m Avery, a game developer who likes making things from scratch to really understand how they work. I’ve used all kinds of technologies across my projects, so I’m comfortable adapting to whatever a job needs.
+</p> 
+"""
 
   [[params.personalInfo]]
   label = "Age"
-  value = "17"
+  value = "18"
 
   [[params.personalInfo]]
   label = "Languages"
-  value = "English, Italian (mother tongue)"
+  value = "English (Ielts 7.5), Italian (mother tongue)"
 
   [[params.personalInfo]]
   label = "Location"
@@ -32,29 +36,17 @@ about = "<p>Hi, I'm high school student interested in game development, physics 
   icon = "fa-brands fa-github"
   url = "https://github.com/fantasyAlgo"
 
-  [[params.education]]
-  year = "2021-2025"
-  title = "High School"
-  institution = "Itis Enrico Fermi"
-  status = "Graduated"
+  [[params.projects]]
+  title = "Moon lander 3d"
+  description = "A 3d game made completely in webgl and typescript without libraries"
+  image = "images/MoonLanderPhoto.jpeg"
+  url = "https://github.com/fantasyAlgo/Moon_lander_3d"
 
-  [[params.testScores]]
-  test = "SAT"
-  score = "1440"
-  details = "Math: 740, Reading: 700"
-
-  [[params.testScores]]
-  test = "IELTS Academic"
-  score = "7.5"
-  details = "L:7.5;R:7.5;W:7;S:7"
-
-  [[params.certifications]]
-  name = "Generative Adversarial Networks (GANs) Specialization"
-  url = "https://coursera.org/share/df3aa7dfe7d790a175bd985bfdbf1cb4"
-
-  [[params.certifications]]
-  name = "Neural Networks and Deep Learning"
-  url = "https://coursera.org/share/4dab258176c0bc99af20b003a6a135c1"
+  [[params.projects]]
+  title = "Minecraft clone"
+  description = "A simple minecraft clone made in c++ opengl with world generation and saving, with a ton of optimizations!"
+  image = "images/minecraft_clone.png"
+  url = "https://github.com/fantasyAlgo/openglMinicraft"
 
   [[params.projects]]
   title = "Infinite doppelganger"
@@ -63,10 +55,22 @@ about = "<p>Hi, I'm high school student interested in game development, physics 
   url = "/articles/idoppelganger/"
 
   [[params.projects]]
-  title = "Minecraft clone"
-  description = "A simple minecraft clone made in c++ opengl with world generation and saving, with a ton of optimizations!"
-  image = "images/minecraft_clone.png"
-  url = "https://github.com/fantasyAlgo/openglMinicraft"
+  title = "Moon lander game"
+  description = "A canvas JS game where you need to land in procedurally generated terrain"
+  image = "images/moon_lander.jpeg"
+  url = "https://github.com/fantasyAlgo/Moon-lander"
+
+  [[params.projects]]
+  title = "2D physics engine"
+  description = "A 2d physics engine with everything you need to make a game"
+  image = "images/moonPhysicsEngine.png"
+  url = "https://github.com/fantasyAlgo/moonPhysicsEngine"
+
+  [[params.projects]]
+  title = "2D Fluid simulation"
+  description = "An SPH-based fluid simulation inspired by sebastian lague's video"
+  image = "images/fluidSim.png"
+  url = "https://github.com/fantasyAlgo/RayFluidSPH"
 
   [[params.projects]]
   title = "Terraria clone"
@@ -80,11 +84,7 @@ about = "<p>Hi, I'm high school student interested in game development, physics 
   image = "images/pacman_clone.png"
   url = "https://github.com/fantasyAlgo/Fake_pacman"
 
-  [[params.projects]]
-  title = "Moon lander game"
-  description = "A canvas JS game where you need to land in procedurally generated terrain"
-  image = "images/moon_lander.jpeg"
-  url = "https://github.com/fantasyAlgo/Moon-lander"
+
 
   [[params.projects]]
   title = "Asteroid game"
@@ -92,11 +92,7 @@ about = "<p>Hi, I'm high school student interested in game development, physics 
   image = "images/asteroids.jpeg"
   url = "https://github.com/fantasyAlgo/JFrameAsteroids"
 
-  [[params.projects]]
-  title = "2D Fluid simulation"
-  description = "An SPH-based fluid simulation inspired by sebastian lague's video"
-  image = "images/fluidSim.png"
-  url = "https://github.com/fantasyAlgo/RayFluidSPH"
+
 
   [[params.small_projects]]
   title = "Rubik's cube simulator"
