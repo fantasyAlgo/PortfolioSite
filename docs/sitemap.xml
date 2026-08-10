@@ -2,17 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://fantasyalgo.github.io/PortfolioSite/articles/</loc>
+    <loc>http://localhost:1313/PortfolioSite/articles/</loc>
     <lastmod>2025-07-09T17:54:22+02:00</lastmod>
   </url><url>
-    <loc>https://fantasyalgo.github.io/PortfolioSite/articles/infinite-doppelganger-writeup/</loc>
+    <loc>http://localhost:1313/PortfolioSite/articles/infinite-doppelganger-writeup/</loc>
     <lastmod>2025-07-09T17:54:22+02:00</lastmod>
   </url><url>
-    <loc>https://fantasyalgo.github.io/PortfolioSite/</loc>
+    <loc>http://localhost:1313/PortfolioSite/</loc>
     <lastmod>2025-07-09T17:54:22+02:00</lastmod>
   </url><url>
-    <loc>https://fantasyalgo.github.io/PortfolioSite/categories/</loc>
+    <loc>http://localhost:1313/PortfolioSite/categories/</loc>
   </url><url>
-    <loc>https://fantasyalgo.github.io/PortfolioSite/tags/</loc>
+    <loc>http://localhost:1313/PortfolioSite/tags/</loc>
   </url>
 </urlset>

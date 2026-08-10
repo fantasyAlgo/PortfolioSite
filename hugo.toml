@@ -106,6 +106,18 @@ Hi, I’m Sara, a game developer who likes making things from scratch to really 
   image = "images/AstarDemo.png"
   url = "https://github.com/fantasyAlgo/AstarMaze"
 
+  [[params.small_projects]]
+  title = "funkoDjango"
+  description = "A simple test website to buy funko pops, made in django and sqlite"
+  image = "images/funkoPop.png"
+  url = "https://github.com/fantasyAlgo/funkoDjango"
+
+  [[params.small_projects]]
+  title = "FakeBookings"
+  description = "A simple test website to rent hotels, made in flask and sqlite"
+  image = "images/FakeBookings.png"
+  url = "https://github.com/fantasyAlgo/FakeBookings"
+
 
 
   [[params.contact]]
